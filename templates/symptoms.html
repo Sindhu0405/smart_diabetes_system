@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Symptoms - Smart Diabetes System</title>
+    <style>
+       body {
+            font-family: 'Courier New', Courier, monospace;
+            background: url('/static/s1.webp');
+            background-size: cover;
+            background-color: #f0f0f0;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-box {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>Enter Symptoms</h2>
+        <form method="post">
+            <label>Fatigue:</label>
+            <select name="fatigue">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+            <label>Blurred Vision:</label>
+            <select name="blurred_vision">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+            <label>Increased Thirst:</label>
+            <select name="increased_thirst">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+            <label>Frequent Urination:</label>
+            <select name="frequent_urination">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+            <label>Glucose Level (mg/dL):</label>
+            <select name="know_glucose" id="know_glucose" onchange="toggleGlucoseField()">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+</select>
+
+<div id="glucose_input" style="display: none; margin-top: 10px;">
+    <label>Glucose Level (mg/dL):</label>
+    <input type="number" name="glucose" placeholder="Enter your glucose level">
+</div>
+
+<script>
+function toggleGlucoseField() {
+    const know = document.getElementById("know_glucose").value;
+    const inputDiv = document.getElementById("glucose_input");
+    inputDiv.style.display = (know === "yes") ? "block" : "none";
+}
+</script>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Slip - Smart Diabetes System</title>
+    <style>
+         body {
+            font-family: 'Courier New', Courier, monospace;
+            background: url('/static/r1.webp');
+            background-size: cover;
+            background-color: #f0f0f0;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .slip {
+            background-color: white;
+            border: 2px dashed #333;
+            padding: 30px 40px;
+            border-radius: 20px;
+            width: 400px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+        hr {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slip">
+        <h2>🏥 Patient Report</h2>
+        <p><strong>👤Patient Name:</strong> {{ name }}</p>
+        <p><strong>🎂Age:</strong> {{ age }}</p>
+        <p><strong>🩸Given Glucose Level:</strong> {{ glucose }} mg/dL</p>
+        <p><strong>💉Predicted Insulin Dosage:</strong> {{ insulin }} units</p>
+
+        {% if glucose|float > 125 %}
+            <p style="color: red;"><strong>Diagnosis:</strong> This patient is likely <strong>diabetic</strong>.</p>
+        {% else %}
+            <p style="color: green;"><strong>Diagnosis:</strong> This patient is likely <strong>not diabetic</strong>.</p>
+        {% endif %}
+
+        <hr>
+        <p>✔ This is a computer-generated estimation.</p>
+    </div>
+</body>
+</html>
